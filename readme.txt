@@ -1,0 +1,13 @@
+Pasos para ejecutar la aplicación:
+
+1) Instalar PostgreSQL.
+2) Crear una nueva base de datos. Ejemplo: "users".
+3) Ubicar el archivo de configuración de la base de datos llamado "dbconfig.properties".
+4) Editar los datos del archivo con los datos correspondientes a tu base de datos. Ejemplo:
+	
+	dburl = jdbc:postgresql://localhost:5432/		//URL de tu base de datos
+	dbname = users									//Nombre de la base de datos que se creó
+	dbuser = postgresql 							//Nombre de usuario de PostgreSQL
+	dbpassword  = root								//Contraseña de usuario de PostgreSQL
+
+5) En el caso de ejecutar el código desde el IDE, ejecutar la clase "Test.java". Si se ejecuta directamente la aplicación, ejecutar "ORMLite-Logging.jar".
