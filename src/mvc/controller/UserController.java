@@ -44,7 +44,7 @@ public class UserController implements ActionListener {
     }
     
     private void replicateActions() {
-        
+        model.replicateUsers();
     }
     
     private void showMessagesToUser(int errorCode) {

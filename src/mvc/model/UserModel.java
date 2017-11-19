@@ -70,4 +70,9 @@ public class UserModel {
         return result;
     }
     
+    public boolean replicateUsers() {
+        
+        return true;
+    }
+    
 }
