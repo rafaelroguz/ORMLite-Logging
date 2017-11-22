@@ -19,6 +19,13 @@ import java.util.Properties;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+/**
+ * La clase UserModel permite realizar conexiones a la base de dato para la inserción
+ * de usuarios a la misma. Además se encarga de todas las peticiones por parte 
+ * de la GUI, que son recibidas directamente de UserController.
+ * @author rafael
+ */
+
 public class UserModel {
     
     private static final int SUCCESS_REGISTER = 0;
@@ -70,7 +77,9 @@ public class UserModel {
     }
     
     /**
-     * Recupera la información del usuario contenida en la línea de entrada.
+     * Recupera la información del usuario contenida en la línea de entrada. Usa
+     * el caractér "@" para identificar en qué parte de la línea comienza un campo
+     * del usuario.
      * @param logbookLine: Línea de la bitácora en donde buscar campo de usuario
      * o contraseña.
      * @return Campo de usuario o contraseña.
@@ -131,13 +140,13 @@ public class UserModel {
             result = SUCCESS_REGISTER;
         } catch (FileNotFoundException e1) {
             result = ERROR_FILE_NOT_FOUND;
-            e1.printStackTrace();
+            //e1.printStackTrace();
         } catch (IOException e2) {
             result = ERROR_FILE_LECTURE;
-            e2.printStackTrace();
+            //e2.printStackTrace();
         } catch (SQLException e3) {
             result = ERROR_REGISTERED_USER;
-            e3.printStackTrace();
+            //e3.printStackTrace();
         }
         
         return result;
@@ -165,11 +174,28 @@ public class UserModel {
         return result;
     }
     
+    /**
+     * Recupera los nombres de usuario y contraseñas de la bitácora para realizar
+     * el registro de los mismos en la base de datos.
+     * @return true si el registro se llevó a cabo sin problemas. Esto incluye 
+     * registro total o parcial de todos los usuarios, dependiendo de si ya 
+     * existen en la base de datos o no. false si la bitácora no tiene historial
+     * de registro de usuarios en la base de datos.
+     */
+    
     public boolean replicateUsers() {
         ArrayList<String> logbook = readLogbook(BITACORA);
+
+        if (logbook.isEmpty()) {
+            return false;
+        }
         
-        getUserField(logbook.get(0));
-        
+        for (int i = 0; i < logbook.size(); i=i+2) {
+            String userName = getUserField(logbook.get(i));
+            String password = getUserField(logbook.get(i+1));
+            insertInDB(userName, password);
+        }
+
         return true;
     }
     

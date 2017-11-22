@@ -3,6 +3,12 @@ package mvc.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+/**
+ * La clase User es el modelo del usuario a registrar. Consiste en atributos para
+ * nombre de usuario y contraseña respectivamente.
+ * @author rafael
+ */
+
 @DatabaseTable(tableName = "user")
 public class User {
     
