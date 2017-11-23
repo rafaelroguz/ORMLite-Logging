@@ -2,15 +2,15 @@ package mvc.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
+
 import javax.swing.JOptionPane;
 
 import mvc.model.UserModel;
-import mvc.view.UserView;
+import mvc.view.RegisterView;
 
 /**
- * La clase UserController permite enlazar la GUI con el modelo (UserView con
- * UserModel). Permite recuperar información de los elementos de la GUI, así como
+ * La clase UserController permite enlazar la GUI con el modelo (RegisterView con
+ UserModel). Permite recuperar información de los elementos de la GUI, así como
  * comunicarse con los métodos de UserModel para procesar las peticiones de registro
  * de usuario o réplica de registros de usuario.
  * @author rafael
@@ -25,15 +25,14 @@ public class UserController implements ActionListener {
     private static final int ERROR_EMPTY_FIELDS = 4;
     private static final int ERROR_EMPTY_LOGBOOK = 5;
     private static final int SUCCESS_REPLICATE = 6;
-    private final UserView view;
+    private final RegisterView view;
     private final UserModel model;
     
-    public UserController(UserView view, UserModel model) {
+    public UserController(RegisterView view, UserModel model) {
         this.view = view;
         this.model = model;
         
         this.view.getRegisterButton().addActionListener(this);
-        this.view.getReplicateButton().addActionListener(this);
         this.view.getExitButton().addActionListener(this);
         
         this.view.setLocationRelativeTo(null);
@@ -47,13 +46,12 @@ public class UserController implements ActionListener {
     
     private void registerUser() {
         String userName = view.getUserName().getText();
-        String password = Arrays.toString(view.getPassword().getPassword());
         String EMPTY_PASSWORD = "[]";
         
-        if (userName.equals("") || password.equals(EMPTY_PASSWORD)) {
+        if (userName.equals("") ) {
             showMessagesToUser(ERROR_EMPTY_FIELDS);
         } else {
-            showMessagesToUser(model.registerUser(userName, password));
+            
         }
     }
     
@@ -139,9 +137,6 @@ public class UserController implements ActionListener {
         
         if (pressedButton == view.getRegisterButton()) {
             registerUser();
-        }
-        else if (pressedButton == view.getReplicateButton()) {
-            replicateActions();
         }
         else if (pressedButton == view.getExitButton()) {
             System.exit(0);

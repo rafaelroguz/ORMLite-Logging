@@ -5,8 +5,8 @@ import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * La clase User es el modelo del usuario a registrar. Consiste en atributos para
- * nombre de usuario y contraseña respectivamente.
- * @author rafael
+ * nombre de usuario (que debe ser único), nombre, apellido y correo electrónico.
+ * @author Rafael Rodríguez Guzmán
  */
 
 @DatabaseTable(tableName = "user")
@@ -14,32 +14,52 @@ public class User {
     
     //El atributo "name" será usado como clave primaria en la tabla "user".
     @DatabaseField(id = true)
-    private String name;
+    private String userName;
     //El atributo "password" tendrá una columna en la tabla "user".
     @DatabaseField
-    private String password;
+    private String firstName;
+    @DatabaseField
+    private String lastName;
+    @DatabaseField
+    private String email;
     
     public User() {}
-    
-    public User(String name, String password) {
-        this.name = name;
-        this.password = password;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
-    public String getName() {
-        return name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getPassword() {
-        return password;
-    }
-    
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public String toString() {
+        return "USER_DATA=$" + userName + "$" + firstName + "$" + lastName + "$" + email;
     }
     
 }

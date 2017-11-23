@@ -129,10 +129,7 @@ public class UserModel {
             //Crea la tabla si no existe en la BD.
             TableUtils.createTableIfNotExists(connectionSource, User.class);
             
-            User user = new User(userName, password);
-            
-            //Crea una nueva tupla en la tabla si el usuario no existe.
-            userDao.create(user);
+
             
             //Cierra la conexión con la BD.
             connectionSource.close();
