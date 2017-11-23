@@ -12,7 +12,7 @@ import org.apache.commons.logging.LogFactory;
 
 public class DeleteModel {
 
-    private static final int SUCCESS_DELETE = 1; 
+    private final int SUCCESS_DELETE = 1; 
     private final Log log = LogFactory.getLog(UserModel.class);
     
     /**
@@ -43,7 +43,7 @@ public class DeleteModel {
         int resultCode = dao.deleteUser(user);
         
         if (resultCode == SUCCESS_DELETE) {
-            log.info(user + "$@DELETE");
+            log.info(user + "$DELETE");
         } 
         
         return resultCode;

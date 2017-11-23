@@ -12,7 +12,7 @@ import org.apache.commons.logging.LogFactory;
 
 public class UpdateModel {
 
-    private static final int SUCCESS_UPDATE = 1; 
+    private final int SUCCESS_UPDATE = 1; 
     private final Log log = LogFactory.getLog(UserModel.class);   
     
     /**
@@ -43,7 +43,7 @@ public class UpdateModel {
         int resultCode = dao.updateUser(user);
         
         if (resultCode == SUCCESS_UPDATE) {
-            log.info(user + "$@UPDATE");
+            log.info(user + "$UPDATE");
         } 
         
         return resultCode;

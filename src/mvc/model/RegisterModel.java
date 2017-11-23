@@ -12,7 +12,7 @@ import org.apache.commons.logging.LogFactory;
 
 public class RegisterModel {
     
-    private static final int SUCCESS_REGISTER = 1; 
+    private final int SUCCESS_REGISTER = 1; 
     private final Log log = LogFactory.getLog(UserModel.class);   
     
     /**
@@ -28,7 +28,7 @@ public class RegisterModel {
         int resultCode = dao.insertUser(user);
         
         if (resultCode == SUCCESS_REGISTER) {
-            log.info(user + "$@REGISTER");
+            log.info(user + "$REGISTER");
         }    
         
         return resultCode;
