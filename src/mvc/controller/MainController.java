@@ -23,14 +23,9 @@ import mvc.view.UpdateView;
 
 public class MainController implements ActionListener {
 
-    private final int SUCCESS = 1;
-    private final int ERROR_DBCONFIG_FILE = 2;
-    private final int ERROR_DBCONFIG_LECTURE = 3;
-    private final int ERROR_REGISTERED_USER = 4;
-    private final int ERROR_UPDATE = 5;
-    private final int ERROR_DELETE = 6;
-    private final int ERROR_EMPTY_LOGBOOK = 7;
-    private final int ERROR_REPLICATE = 8;
+    private final String SUCCESS = "SUCCESS";
+    private final String ERROR_EMPTY_LOGBOOK = "ERROR_EMPTY_LOGBOOK";
+    private final String ERROR_REPLICATE = "ERROR_REPLICATE";
     private final MainView view;
     private final MainModel model;
     
@@ -52,7 +47,7 @@ public class MainController implements ActionListener {
      */
     
     private void replicateDB() {
-        int resultCode = model.replicate();
+        String resultCode = model.replicate();
         
         showMessageToUser(resultCode);
     }
@@ -63,47 +58,12 @@ public class MainController implements ActionListener {
      * @param messageCode: Código del mensaje a mostrar. 
      */
     
-    private void showMessageToUser(int messageCode) {
+    private void showMessageToUser(String messageCode) {
         switch (messageCode) {
             case SUCCESS:
                 JOptionPane.showMessageDialog(
                     null,
                     "Réplica exitosa!");
-                break;
-            case ERROR_DBCONFIG_FILE:
-                JOptionPane.showMessageDialog(
-                    null,
-                    "No se encontró el archivo de configuración de la BD.",
-                    null,
-                    JOptionPane.ERROR_MESSAGE);
-                break;
-            case ERROR_DBCONFIG_LECTURE:
-                JOptionPane.showMessageDialog(
-                    null,
-                    "Error al leer el archivo de configuración de la BD.",
-                    null,
-                    JOptionPane.ERROR_MESSAGE);
-                break;
-            case ERROR_REGISTERED_USER:
-                JOptionPane.showMessageDialog(
-                    null,
-                    "El usuario ya se encuentra registrado en la BD.",
-                    null,
-                    JOptionPane.ERROR_MESSAGE);
-                break;  
-            case ERROR_UPDATE:
-                JOptionPane.showMessageDialog(
-                    null,
-                    "No se pudo actualizar el usuario.",
-                    null,
-                    JOptionPane.ERROR_MESSAGE);
-                break;
-            case ERROR_DELETE:
-                JOptionPane.showMessageDialog(
-                    null,
-                    "No se pudo eliminar el usuario.",
-                    null,
-                    JOptionPane.ERROR_MESSAGE);
                 break;
             case ERROR_EMPTY_LOGBOOK:
                 JOptionPane.showMessageDialog(

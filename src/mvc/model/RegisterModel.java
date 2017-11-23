@@ -12,8 +12,8 @@ import org.apache.commons.logging.LogFactory;
 
 public class RegisterModel {
     
-    private final int SUCCESS_REGISTER = 1; 
-    private final Log log = LogFactory.getLog(UserModel.class);   
+    private final String SUCCESS = "SUCCESS"; 
+    private final Log log = LogFactory.getLog(RegisterModel.class);   
     
     /**
      * Recibe la petición de registro de usuario de RegisterController y la redirige
@@ -23,11 +23,11 @@ public class RegisterModel {
      * @return Código de resultado de la operación, retornado por UserDao.
      */
     
-    public int registerUser(User user) {
+    public String registerUser(User user) {
         UserDao dao = new UserDao();
-        int resultCode = dao.insertUser(user);
+        String resultCode = dao.insertUser(user);
         
-        if (resultCode == SUCCESS_REGISTER) {
+        if (resultCode.equals(SUCCESS)) {
             log.info(user + "$REGISTER");
         }    
         

@@ -12,8 +12,8 @@ import org.apache.commons.logging.LogFactory;
 
 public class UpdateModel {
 
-    private final int SUCCESS_UPDATE = 1; 
-    private final Log log = LogFactory.getLog(UserModel.class);   
+    private final String SUCCESS = "SUCCESS"; 
+    private final Log log = LogFactory.getLog(UpdateModel.class);   
     
     /**
      * Recibe la petición de búsqueda de un usuario en la BD por su nombre de
@@ -38,11 +38,11 @@ public class UpdateModel {
      * @return Código de resultado de la operación, retornado por UserDao.
      */
     
-    public int updateUser(User user) {
+    public String updateUser(User user) {
         UserDao dao = new UserDao();
-        int resultCode = dao.updateUser(user);
+        String resultCode = dao.updateUser(user);
         
-        if (resultCode == SUCCESS_UPDATE) {
+        if (resultCode.equals(SUCCESS)) {
             log.info(user + "$UPDATE");
         } 
         

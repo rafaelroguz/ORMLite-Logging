@@ -18,11 +18,11 @@ import mvc.view.RegisterView;
 
 public class RegisterController implements ActionListener {
     
-    private final int SUCCESS_REGISTER = 1;
-    private final int ERROR_DBCONFIG_FILE = 2;
-    private final int ERROR_DBCONFIG_LECTURE = 3;
-    private final int ERROR_REGISTERED_USER = 4;
-    private final int ERROR_EMPTY_FIELDS = 10;
+    private final String SUCCESS = "SUCCESS";
+    private final String ERROR_DBCONFIG_FILE = "ERROR_DBCONFIG_FILE";
+    private final String ERROR_DBCONFIG_LECTURE = "ERROR_DBCONFIG_LECTURE";
+    private final String ERROR_REGISTERED_USER = "ERROR_REGISTERED_USER";
+    private final String ERROR_EMPTY_FIELDS = "ERROR_EMPTY_FIELDS";
     
     private final RegisterView view;
     private final RegisterModel model;
@@ -57,7 +57,7 @@ public class RegisterController implements ActionListener {
             user.setLastName(lastName);
             user.setEmail(email);
             
-            int resultCode = model.registerUser(user);
+            String resultCode = model.registerUser(user);
             
             showMessageToUser(resultCode);
             
@@ -108,7 +108,7 @@ public class RegisterController implements ActionListener {
      * @param messageCode: Código del mensaje a mostrar. 
      */
     
-    private void showMessageToUser(int messageCode) {
+    private void showMessageToUser(String messageCode) {
         switch (messageCode) {
             case ERROR_EMPTY_FIELDS:
                 JOptionPane.showMessageDialog(
@@ -117,7 +117,7 @@ public class RegisterController implements ActionListener {
                     null,
                     JOptionPane.ERROR_MESSAGE);
                 break;
-            case SUCCESS_REGISTER:
+            case SUCCESS:
                 JOptionPane.showMessageDialog(
                     null,
                     "Registro de usuario exitoso!");

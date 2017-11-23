@@ -18,12 +18,12 @@ import mvc.view.DeleteView;
 
 public class DeleteController implements ActionListener {
     
-    private final int SUCCESS = 1;
-    private final int ERROR_DBCONFIG_FILE = 2;
-    private final int ERROR_DBCONFIG_LECTURE = 3;
-    private final int ERROR_DELETE = 6;
-    private final int ERROR_EMPTY_FIELDS = 10;
-    private final int ERROR_USER_NOT_FOUND = 11;
+    private final String SUCCESS = "SUCCESS";
+    private final String ERROR_DBCONFIG_FILE = "ERROR_DBCONFIG_FILE";
+    private final String ERROR_DBCONFIG_LECTURE = "ERROR_DBCONFIG_LECTURE";
+    private final String ERROR_DELETE = "ERROR_DELETE";
+    private final String ERROR_EMPTY_FIELDS = "ERROR_EMPTY_FIELDS";
+    private final String ERROR_USER_NOT_FOUND = "ERROR_USER_NOT_FOUND";
     private final DeleteView view;
     private final DeleteModel model;
     private User user;
@@ -68,9 +68,11 @@ public class DeleteController implements ActionListener {
      */
     
     private void deleteUser() {
-        int resultCode = model.deleteUser(user);
+        String resultCode = model.deleteUser(user);
         
         showMessageToUser(resultCode);
+        
+        cleanFields();
     }
     
     /**
@@ -79,7 +81,7 @@ public class DeleteController implements ActionListener {
      * @param messageCode: Código del mensaje a mostrar. 
      */
     
-    private void showMessageToUser(int messageCode) {
+    private void showMessageToUser(String messageCode) {
         switch (messageCode) {
             case ERROR_EMPTY_FIELDS:
                 JOptionPane.showMessageDialog(

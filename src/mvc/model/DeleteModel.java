@@ -12,8 +12,8 @@ import org.apache.commons.logging.LogFactory;
 
 public class DeleteModel {
 
-    private final int SUCCESS_DELETE = 1; 
-    private final Log log = LogFactory.getLog(UserModel.class);
+    private final String SUCCESS = "SUCCESS"; 
+    private final Log log = LogFactory.getLog(DeleteModel.class);
     
     /**
      * Recibe la petición de búsqueda de un usuario en la BD por su nombre de
@@ -38,11 +38,11 @@ public class DeleteModel {
      * @return Código de resultado de la operación, retornado por UserDao.
      */
     
-    public int deleteUser(User user) {
+    public String deleteUser(User user) {
         UserDao dao = new UserDao();
-        int resultCode = dao.deleteUser(user);
+        String resultCode = dao.deleteUser(user);
         
-        if (resultCode == SUCCESS_DELETE) {
+        if (resultCode.equals(SUCCESS)) {
             log.info(user + "$DELETE");
         } 
         

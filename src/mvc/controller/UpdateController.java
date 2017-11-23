@@ -18,12 +18,12 @@ import mvc.view.UpdateView;
 
 public class UpdateController implements ActionListener {
     
-    private final int SUCCESS_UPDATE = 1;
-    private final int ERROR_DBCONFIG_FILE = 2;
-    private final int ERROR_DBCONFIG_LECTURE = 3;
-    private final int ERROR_UPDATE = 5;
-    private final int ERROR_EMPTY_FIELDS = 10;
-    private final int ERROR_USER_NOT_FOUND = 11;
+    private final String SUCCESS = "SUCCESS";
+    private final String ERROR_DBCONFIG_FILE = "ERROR_DBCONFIG_FILE";
+    private final String ERROR_DBCONFIG_LECTURE = "ERROR_DBCONFIG_LECTURE";
+    private final String ERROR_UPDATE = "ERROR_UPDATE";
+    private final String ERROR_EMPTY_FIELDS = "ERROR_EMPTY_FIELDS";
+    private final String ERROR_USER_NOT_FOUND = "ERROR_USER_NOT_FOUND";
     private final UpdateView view;
     private final UpdateModel model;
     private String userName;
@@ -81,7 +81,7 @@ public class UpdateController implements ActionListener {
             user.setLastName(lastName);
             user.setEmail(email);
             
-            int resultCode = model.updateUser(user);
+            String resultCode = model.updateUser(user);
             showMessageToUser(resultCode);
             
             cleanFields();
@@ -117,7 +117,7 @@ public class UpdateController implements ActionListener {
      * @param messageCode: Código del mensaje a mostrar. 
      */
     
-    private void showMessageToUser(int messageCode) {
+    private void showMessageToUser(String messageCode) {
         switch (messageCode) {
             case ERROR_EMPTY_FIELDS:
                 JOptionPane.showMessageDialog(
@@ -126,7 +126,7 @@ public class UpdateController implements ActionListener {
                     null,
                     JOptionPane.ERROR_MESSAGE);
                 break;
-            case SUCCESS_UPDATE:
+            case SUCCESS:
                 JOptionPane.showMessageDialog(
                     null,
                     "Actualización de usuario exitosa!");

@@ -10,4 +10,4 @@ Pasos para ejecutar la aplicación:
 	dbuser = postgresql 							//Nombre de usuario de PostgreSQL
 	dbpassword  = root								//Contraseña de usuario de PostgreSQL
 
-5) En el caso de ejecutar el código desde el IDE, ejecutar la clase "Test.java". Si se ejecuta directamente la aplicación, ejecutar "ORMLite-Logging.jar". El archivo .jar se encuentra en la carpeta "aplicacion".
+5) En el caso de ejecutar el código desde el IDE, ejecutar la clase "Test.java". Si se ejecuta directamente la aplicación, ejecutar "ORMLite-Logging.jar". El archivo .jar se encuentra en la carpeta "aplicacion_ejecutable".

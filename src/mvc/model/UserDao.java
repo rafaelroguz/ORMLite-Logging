@@ -26,23 +26,21 @@ import java.util.Properties;
 
 public class UserDao {
 
-    private final int SUCCESS = 1;
-    private final int ERROR_DBCONFIG_FILE = 2;
-    private final int ERROR_DBCONFIG_LECTURE = 3;
-    private final int ERROR_REGISTERED_USER = 4;
-    private final int ERROR_UPDATE = 5;
-    private final int ERROR_DELETE = 6;
+    private final String SUCCESS = "SUCCESS";
+    private final String ERROR_DBCONFIG_FILE = "ERROR_DBCONFIG_FILE";
+    private final String ERROR_DBCONFIG_LECTURE = "ERROR_DBCONFIG_LECTURE";
+    private final String ERROR_REGISTERED_USER = "ERROR_REGISTERED_USER";
+    private final String ERROR_UPDATE = "ERROR_UPDATE";
+    private final String ERROR_DELETE = "ERROR_DELETE";
     
     /**
      * Realiza la inserción de un nuevo usuario a la base de datos
      * @param user Usuario a registrar en la BD.
-     * @return Código de resultado de la operación. 1 si se realizó el registro
-     * exitoso, 2 si el archivo de configuración no se encuentra, 3 si hubo problema
-     * al leer el archivo de configuración, 4 si el usuario ya está registrado.
+     * @return Código de resultado de la operación.
      */
     
-    public int insertUser(User user) {
-        int result = SUCCESS;
+    public String insertUser(User user) {
+        String result = SUCCESS;
         
         try {
             //Archivo de configuración de la BD.
@@ -145,13 +143,11 @@ public class UserDao {
     /**
      * Realiza la actualización de un usuario a la base de datos
      * @param user Usuario a actualizar en la BD.
-     * @return Código de resultado de la operación. 1 si la actualización fue
-     * exitosa, 2 si el archivo de configuración no se encuentra, 3 si hubo problema
-     * al leer el archivo de configuración, 5 si el usuario no pudo actualizarse.
+     * @return Código de resultado de la operación.
      */
     
-    public int updateUser(User user) {
-        int result = SUCCESS;
+    public String updateUser(User user) {
+        String result = SUCCESS;
         
         try {
             //Archivo de configuración de la BD.
@@ -203,13 +199,11 @@ public class UserDao {
     /**
      * Realiza la eliminación de un usuario a la base de datos
      * @param user Usuario a eliminar en la BD.
-     * @return Código de resultado de la operación. 1 si la eliminación fue
-     * exitosa, 2 si el archivo de configuración no se encuentra, 3 si hubo problema
-     * al leer el archivo de configuración, 6 si el usuario no pudo eliminarse.
+     * @return Código de resultado de la operación.
      */
     
-    public int deleteUser(User user) {
-        int result = SUCCESS;
+    public String deleteUser(User user) {
+        String result = SUCCESS;
         
         try {
             //Archivo de configuración de la BD.

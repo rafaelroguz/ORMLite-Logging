@@ -17,9 +17,9 @@ public class MainModel {
     private final String SQL_REGISTER = "REGISTER";
     private final String SQL_UPDATE = "UPDATE";
     private final String SQL_DELETE = "DELETE";
-    private final int SUCCESS = 1;
-    private final int ERROR_EMPTY_LOGBOOK = 7;
-    private final int ERROR_REPLICATE = 8;
+    private final String SUCCESS = "SUCCESS";
+    private final String ERROR_EMPTY_LOGBOOK = "ERROR_EMPTY_LOGBOOK";
+    private final String ERROR_REPLICATE = "ERROR_REPLICATE";
     private final String LOGBOOK = "bitacora.log";
     
     /**
@@ -28,8 +28,8 @@ public class MainModel {
      * @return Código de resultado de la operación.
      */
     
-    public int replicate() {
-        int result = SUCCESS;
+    public String replicate() {
+        String result = SUCCESS;
         ArrayList<String> logbookLines = readLogbook(LOGBOOK);
         
         if (logbookLines.isEmpty()) {
@@ -43,7 +43,7 @@ public class MainModel {
                sqlEvent = getSQLEvent(logbookLine);
                
                if ( (user != null) && (!sqlEvent.equals("")) ) {
-                   result = selectDBEvent(user, sqlEvent);
+                   selectDBEvent(user, sqlEvent);
                } else {
                    result = ERROR_REPLICATE;
                    break;
@@ -63,23 +63,20 @@ public class MainModel {
      * @return Código de resultado de la operación.
      */
     
-    private int selectDBEvent(User user, String sqlEvent) {
-        int result = SUCCESS;
+    private void selectDBEvent(User user, String sqlEvent) {
         UserDao dao = new UserDao();
         
         switch (sqlEvent) {
             case SQL_REGISTER:
-                result = dao.insertUser(user);
+                dao.insertUser(user);
                 break;
             case SQL_UPDATE:
-                result = dao.updateUser(user);
+                dao.updateUser(user);
                 break;
             case SQL_DELETE:
-                result = dao.deleteUser(user);
+                dao.deleteUser(user);
                 break;
         }
-        
-        return result;
     }    
     
     /**
