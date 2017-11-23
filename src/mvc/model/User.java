@@ -13,17 +13,24 @@ import com.j256.ormlite.table.DatabaseTable;
 public class User {
     
     //El atributo "name" será usado como clave primaria en la tabla "user".
-    @DatabaseField(id = true)
+    @DatabaseField(id = true, columnName = "userName")
     private String userName;
-    //El atributo "password" tendrá una columna en la tabla "user".
-    @DatabaseField
+    //El atributo firstName tendrá una columna "firstName" en la tabla.
+    @DatabaseField(canBeNull = false, columnName = "firstName")
     private String firstName;
-    @DatabaseField
+    //El atributo lastName tendrá una columna "lastName" en la tabla.
+    @DatabaseField(canBeNull = false, columnName = "lastName")
     private String lastName;
-    @DatabaseField
+    //El atributo email tendrá una columna "email" en la tabla.
+    @DatabaseField(canBeNull = false, columnName = "email")
     private String email;
     
-    public User() {}
+    public User() {
+        userName = "";
+        firstName = "";
+        lastName = "";
+        email = "";
+    }
 
     public String getUserName() {
         return userName;

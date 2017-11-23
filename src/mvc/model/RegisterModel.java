@@ -28,7 +28,7 @@ public class RegisterModel {
         int resultCode = dao.insertUser(user);
         
         if (resultCode == SUCCESS_REGISTER) {
-            log.info(user);
+            log.info(user + "$@REGISTER");
         }    
         
         return resultCode;

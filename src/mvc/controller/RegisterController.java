@@ -8,9 +8,16 @@ import mvc.model.RegisterModel;
 import mvc.model.User;
 import mvc.view.RegisterView;
 
+/**
+ * La clase RegisterController realiza la conexión entre RegisterView y RegisterModel,
+ * permitiendo enlazar las peticiones de la GUI con el modelo correspondiente.
+ * Recupera la información necesaria de los elementos de la GUI y los envía al 
+ * modelo para ser procesados de acuerdo a los eventos solicitados por la GUI.
+ * @author Rafael Rodríguez Guzmán
+ */
+
 public class RegisterController implements ActionListener {
     
-    private final int NULL_CODE = 0;
     private final int SUCCESS_REGISTER = 1;
     private final int ERROR_DBCONFIG_FILE = 2;
     private final int ERROR_DBCONFIG_LECTURE = 3;
@@ -53,6 +60,8 @@ public class RegisterController implements ActionListener {
             int resultCode = model.registerUser(user);
             
             showMessageToUser(resultCode);
+            
+            cleanFields();
         }
     }
     
@@ -80,6 +89,17 @@ public class RegisterController implements ActionListener {
         } else {
             return false;
         }
+    }
+    
+    /**
+     * Limpia los campos del usuario después de realizar un registro.
+     */
+    
+    private void cleanFields() {
+        view.getUserName().setText("");
+        view.getFirstName().setText("");
+        view.getLastName().setText("");
+        view.getEmail().setText("");
     }
 
     /**
@@ -123,18 +143,6 @@ public class RegisterController implements ActionListener {
                     null,
                     JOptionPane.ERROR_MESSAGE);
                 break;             
-//            case ERROR_EMPTY_LOGBOOK:
-//                JOptionPane.showMessageDialog(
-//                    null,
-//                    "No hay historial de registro de usuarios.",
-//                    null,
-//                    JOptionPane.ERROR_MESSAGE);
-//                break;
-//            case SUCCESS_REPLICATE:
-//                JOptionPane.showMessageDialog(
-//                    null,
-//                    "Restauración exitosa!");
-//                break;
         }
     }
     

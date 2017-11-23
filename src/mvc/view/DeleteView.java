@@ -3,6 +3,11 @@ package mvc.view;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+/**
+ * General la GUI para eliminar un usuario.
+ * @author Rafael Rodríguez Guzmán
+ */
+
 public class DeleteView extends javax.swing.JFrame {
 
     public DeleteView() {

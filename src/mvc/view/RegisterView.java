@@ -3,6 +3,11 @@ package mvc.view;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+/**
+ * General la GUI para registrar un nuevo usuario.
+ * @author Rafael Rodríguez Guzmán
+ */
+
 public class RegisterView extends javax.swing.JFrame {
 
     public RegisterView() {

@@ -3,6 +3,11 @@ package mvc.view;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+/**
+ * General la GUI para editar un usuario.
+ * @author Rafael Rodríguez Guzmán
+ */
+
 public class UpdateView extends javax.swing.JFrame {
 
     public UpdateView() {
